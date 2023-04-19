@@ -31,16 +31,16 @@ function displayQuote() {
 
 // verificação do texto
 function checkAnswer() {
-	const answer = answerInput.value.toLowerCase(); // convert answer to lowercase for comparison
-	const quote = quotes[currentQuote].toLowerCase(); // convert quote to lowercase for comparison
+	const answer = answerInput.value.toLowerCase(); // converte a frase em minusculo para comparar
+	const quote = quotes[currentQuote].toLowerCase(); 
 	const letters = quote.split("");
 
 	for (let i = 0; i < letters.length; i++) {
 		const letterSpan = document.getElementById(`letter-${i}`);
 		if (answer[i] === letters[i]) {
-			letterSpan.style.color = "blue"; // turn letter blue if correct
+			letterSpan.style.color = "blue"; // torna letra azul se correto
 		} else {
-			letterSpan.style.color = "red"; // turn letter red if incorrect
+			letterSpan.style.color = "red"; // vermelho para incorreto
 			return;
 		}
 	}
@@ -57,7 +57,7 @@ answerInput.addEventListener("keydown", function(event) {
 	}
 });
 
-// butão para verificar a resposta
+// botão para verificar a resposta
 submitButton.addEventListener("Clique Aqui", checkAnswer);
 
 // Faz o enter quebrar linha
@@ -67,5 +67,5 @@ answerInput.addEventListener("keydown", function(event) {
 	}
 });
 
-// display the first quote when the page loads
+// mostra a primeira frase ao carregar o site
 displayQuote();
