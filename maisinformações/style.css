@@ -3,11 +3,11 @@ body {
 	background-size: cover;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	justify-content: center;	
+	align-items: center;	
 	height: 100vh;
 	margin: 0;
-	padding: 0;
+	padding: 7% 0 0 ;
 }
 
 header {
@@ -20,37 +20,41 @@ header {
 	display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 10px;
     box-sizing: border-box;	
 }
-
 h1 {
 	float: left;
 	margin-top: 20px;
 	margin-left: 10px;
-	color:white  !important;
+	color:white  ;
 
 }
+
 
 nav {
-	margin-top: 20px;
-	margin-left: 10px;
+	margin-top: inherit;
+	margin-left: inherit;
 	float: left;
-	margin-right: 10px;
-	font-size:20px;
-	
+	margin-right: inherit	;
+	font-size: 20px;
+		
 }
 a {
+	float: left;
+	margin-top: inherit	;
+	margin-left: inherit;
+	
     color: white;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-a:hover {
+h1:hover {
     color: blue;
 }
 
-a:active {
+:active {
     color: blue;
 }
 
@@ -65,17 +69,23 @@ nav ul li a {
 	display: inline-block;
 	margin-left: 20px;
 }
-
-h2, textarea {
-	font-family:monospace;
-	font-size: 24px;
-	color: black;
-	text-align: center;
-	
+.container {
+	background-color: rgba(255, 255, 255, 0.7);
+	margin-top: 50px;	
+	text-align: inherit;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	overflow-y: auto;
+	padding: 20px;
+	border-radius: 20px;
 }
 
+
+
+
 html {
-    background-color: #351b30;
+    background-color: #ffffff;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     min-width: 300px;
@@ -86,37 +96,17 @@ html {
     -moz-text-size-adjust: 100%;
     text-size-adjust: 100%
 }
-.container {
-	background-color: rgba(255, 255, 255, 0.7);
-	padding: 10px;
-	text-align: center;
-  }
   
 
-p {
-	font-family:monospace;
-	margin: 50px 0;
-    font-size:35px;
-    color: black;
+p , b{
+	margin-top: 0;	
+	text-align: left;
+	font-family:monospace;	
+    font-size:20px;
+    color: rgba(0, 0, 0, 0.7);
 	
 }
 
-textarea {
-	margin-top: 20px;
-	width: 400px;
-	height: 100px;
-	resize: none;
-	padding: 10px;
-	border-radius: 10px;
-	border: none;
-	background-color: rgba(255, 255, 255, 0.7);
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-	font-family: inherit;
-	font-size: inherit;
-	color: inherit;
-	text-align: center;
-	outline: none;
-}
 
 span {
 	font-weight: bold;

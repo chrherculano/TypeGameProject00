@@ -9,13 +9,12 @@ const quotes = [
 	"Você pode observar muito apenas observando",
 	"Você pode observar muito apenas observando",
 	"Acredite que você pode e você já está no meio do caminho",
-	"Dança Gatinho dança"
+	"Dança Gatinho dança"	
 ];
 
 let currentQuote = 0; 
 const answerInput = document.getElementById("answer");
 const quoteDisplay = document.getElementById("quote");
-const submitButton = document.getElementById("submit");
 
 // função para mostrar uma frase aleatoria
 function displayQuote() {
@@ -25,14 +24,14 @@ function displayQuote() {
 	// divida a citação em letras individuais e envolva cada uma em um intervalo com um ID exclusivo
 	const letterSpans = quote.split("").map((letter, i) => `<span id="letter-${i}">${letter}</span>`);
 
-	quoteDisplay.innerHTML = letterSpans.join(""); // display the quote with each letter wrapped in a span
-	answerInput.value = ""; // clear the answer input
+	quoteDisplay.innerHTML = letterSpans.join(""); // exibir a frase com cada letra em um intervalo
+	answerInput.value = ""; // limpar o input do usuario
 }
 
 // verificação do texto
 function checkAnswer() {
-	const answer = answerInput.value.toLowerCase(); // converte a frase em minusculo para comparar
-	const quote = quotes[currentQuote].toLowerCase(); 
+	const answer = answerInput.value.toLowerCase(); // converte a resposta em minusculo para comparar
+	const quote = quotes[currentQuote].toLowerCase(); // converte a frase em minusculo para comparar
 	const letters = quote.split("");
 
 	for (let i = 0; i < letters.length; i++) {
@@ -57,13 +56,10 @@ answerInput.addEventListener("keydown", function(event) {
 	}
 });
 
-// botão para verificar a resposta
-submitButton.addEventListener("Clique Aqui", checkAnswer);
-
 // Faz o enter quebrar linha
 answerInput.addEventListener("keydown", function(event) {
-	if (event.shiftKey && event.key === "Enter") {
-		answerInput.value += "\n"; // add a line break to the answer input
+	if (event.shiftKey === "Enter") {
+		answerInput.value += "\n"; // atribuindo valor para key de quebrar a linha
 	}
 });
 
