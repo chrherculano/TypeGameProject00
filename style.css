@@ -9,9 +9,6 @@ body {
 	margin: 0;
 	padding: 0;
 }
-#audioButton {
-	display: none;
-  }
 header {
 	position: absolute;
 	top: 0;

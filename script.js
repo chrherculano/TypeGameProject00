@@ -16,6 +16,8 @@ let currentQuote = 0;
 const answerInput = document.getElementById("answer");
 const quoteDisplay = document.getElementById("quote");
 
+
+
 // função para mostrar uma frase aleatoria
 function displayQuote() {
 	currentQuote = Math.floor(Math.random() * quotes.length); // escolhe a frase pelo indice 
@@ -72,6 +74,7 @@ answerInput.addEventListener("keydown", function(event) {
 });	
 // Chama função checkAnswer toda vez que o usuario digita ou excluir o texto no campo de resposta
 answerInput.addEventListener("input", checkAnswer); 
+
 
 // mostra a primeira frase ao carregar o site
 displayQuote();
