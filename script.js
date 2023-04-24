@@ -90,10 +90,10 @@ answerInput.addEventListener("keydown", function(event) {
 });
   
 // Chama função checkAnswer toda vez que o usuario digita ou excluir o texto no campo de resposta
-answerInput.addEventListener("input", function() {
-    checkAnswer();
-    if (answerInput.value.length > quoteDisplay.children.length) {
-        answerInput.value = answerInput.value.slice(0, quoteDisplay.children.length);
+	answerInput.addEventListener("input", function() {
+		checkAnswer();
+		if (answerInput.value.length > quoteDisplay.children.length) {
+			answerInput.value = answerInput.value.slice(0, quoteDisplay.children.length);
     }
 }); 
 
