@@ -1,5 +1,5 @@
 body {
-	background-image: url("https://media.tenor.com/1qXbmObIezQAAAAC/vaporwave-vhs.gif");
+	background-image: url("https://wallpaperaccess.com/full/5927911.gif");
 	background-size: cover;
 	display: flex;
 	flex-direction: column;
@@ -9,6 +9,7 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
 header {
 	position: absolute;
 	top: 0;
