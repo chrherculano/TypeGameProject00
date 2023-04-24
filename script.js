@@ -19,7 +19,7 @@ const quoteDisplay = document.getElementById("quote");
 // função para mostrar uma frase aleatoria
 function displayQuote() {
 	currentQuote = Math.floor(Math.random() * quotes.length); // escolhe a frase pelo indice 
-	const quote = quotes[currentQuote];	
+	const quote = quotes[currentQuote];	// Variavel quote
 
 	// divida a citação em letras individuais e envolva cada uma em um intervalo com um ID exclusivo
 	const letterSpans = quote.split("").map((letter, i) => `<span id="letter-${i}">${letter}</span>`);
@@ -30,29 +30,37 @@ function displayQuote() {
 
 // verificação do texto
 function checkAnswer() {
-	const answer = answerInput.value.toLowerCase(); // converte a resposta em minusculo para comparar
-	const quote = quotes[currentQuote].toLowerCase(); // converte a frase em minusculo para comparar
-	const letters = quote.split("");
-
+	const answer = answerInput.value.toLowerCase(); //define os imput do usuario em letras minusculas
+	const quote = quotes[currentQuote].toLowerCase(); // define as frases em letras minúsculas
+	const letters = quote.split("");// separando cada letra pelo delimitador vazio "" permite que cada letra seja acessada individualmente para compará-la com a letra correspondente digitada pelo usuário.
+	let allCorrect = true; // valor atribuido para poder decidir se a resposta do usuário é correta ou não
+  
+	// percorre cada letra da frase, checa se a letra da resposta do usuário está correta ou errada
 	for (let i = 0; i < letters.length; i++) {
-		const letterSpan = document.getElementById(`letter-${i}`);
-		if (answer[i] === letters[i]) {
-			letterSpan.style.color = "blue"; // torna letra azul se correto
-		} else {
-			letterSpan.style.color = "red"; // vermelho para incorreto
-			return;
-		}
+	  const letterSpan = document.getElementById(`letter-${i}`);
+	  // se a letra digitada pelo usuário é a correta, a letra fica azul
+	  if (answer[i] === letters[i]) {
+		letterSpan.style.color = "blue";
+	  } 
+	  // se a letra digitada é errada, a letra fica vermelha
+	  else if (answer[i]) {
+		letterSpan.style.color = "red";
+		allCorrect = false;
+	  } 
+	  // se o usuário não digitou nada naquela posição, a letra fica preta
+	  else {
+		letterSpan.style.color = "black";
+		allCorrect = false;
+	  }
 	}
-
-	// Mensagem de confirmação e proxima frase
-	alert("Você acertou!");
-	displayQuote();
-}
-
+  }
+  // Adiciona eventos para quando usuario aperta tecla Enter
 answerInput.addEventListener("keydown", function(event) {
 	if (event.key === "Enter" && !event.shiftKey) {
 		event.preventDefault(); // impede comando default do enter para quebrar linha
 		checkAnswer(); // invoca a função de verifica se a frase está correto
+		alert("Nice Você acertou!"); // Alerta 
+		displayQuote();// exibe proxima frase
 	}
 });
 
@@ -61,7 +69,9 @@ answerInput.addEventListener("keydown", function(event) {
 	if (event.shiftKey === "Enter") {
 		answerInput.value += "\n"; // atribuindo valor para key de quebrar a linha
 	}
-});
+});	
+// Chama função checkAnswer toda vez que o usuario digita ou excluir o texto no campo de resposta
+answerInput.addEventListener("input", checkAnswer); 
 
 // mostra a primeira frase ao carregar o site
 displayQuote();
