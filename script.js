@@ -35,48 +35,47 @@ function displayQuote() {
 
 // verificação do texto
 function checkAnswer() {
-	const answer = answerInput.value.toLowerCase(); //define os imput do usuario em letras minusculas
-	const quote = quotes[currentQuote].toLowerCase(); // define as frases em letras minúsculas
-	const letters = quote.split("");// separando cada letra pelo delimitador vazio "" permite que cada letra seja acessada individualmente para compará-la com a letra correspondente digitada pelo usuário.
-	let allCorrect = true; // valor atribuido para poder decidir se a resposta do usuário é correta ou não
-  
-	// percorre cada letra da frase, checa se a letra da resposta do usuário está correta ou errada
-	for (let i = 0; i < letters.length; i++) {
-	  const letterSpan = document.getElementById(`letter-${i}`);
-	  // se a letra digitada pelo usuário é a correta, a letra fica azul
-	  if (answer[i] === letters[i]) {
-		letterSpan.style.color = "blue";
-	  } 
-	  // se a letra digitada é errada, a letra fica vermelha
-	  else if (answer[i]) {
-		letterSpan.style.color = "red";
-		allCorrect = false;
-	  } 
-	  // se o usuário não digitou nada naquela posição, a letra fica preta
-	  else {
-		letterSpan.style.color = "black";
-		allCorrect = false;
-	  }
-	}
-  }
-  
+    const answer = answerInput.value.toLowerCase();
+    const quote = quotes[currentQuote].toLowerCase();
+    const letters = quote.split("");
+    let allCorrect = true;
+
+    for (let i = 0; i < letters.length; i++) {
+        const letterSpan = document.getElementById(`letter-${i}`);
+
+        if (answer[i] === letters[i]) {
+            letterSpan.style.color = "blue";
+        } else if (answer[i]) {
+            letterSpan.style.color = "red";
+            allCorrect = false;
+        } else {
+            letterSpan.style.color = "black";
+            
+        }
+    } 
+
+    return allCorrect; // retorna o valor 
+}
+
+
+// Evento do enter verifica se esta correto ou incorreto e alerta o usuario
 answerInput.addEventListener("keydown", function(event) {
 	if (event.key === "Enter" && !event.shiftKey) {
-		event.preventDefault(); // impede comando default do enter para quebrar linha
-		checkAnswer(); // invoca a função de verifica se a frase está correto
-		alert("Nice Você acertou!"); // Alerta 
-		displayQuote();// exibe proxima frase
-		var x = document.getElementById("Coin collect sound effect free to use.mp3"); 
-			x.play();
+	  event.preventDefault();
+	  if (checkAnswer()) {
+		alert("Nice! Você acertou!");
+		displayQuote();
+		var x = document.getElementById("Coin collect sound effect free to use.mp3");
+		x.play();
+	  } else {
+		alert("Você errou, tente novamente!");
+		answerInput.value = "";
+		checkAnswer(); 
+	  }
 	}
-});
-
-// Faz o enter quebrar linha
-answerInput.addEventListener("keydown", function(event) {
-	if (event.shiftKey === "Enter") {
-		answerInput.value += "\n"; // atribuindo valor para key de quebrar a linha
-	}
-});
+  });
+  
+  
 // Chama função checkAnswer toda vez que o usuario digita ou excluir o texto no campo de resposta
 answerInput.addEventListener("input", checkAnswer); 
 
